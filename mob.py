@@ -8,12 +8,13 @@ class Mob(Character):
         self._name = 'Mob'
         self._hp = 100
         self._attack = 10
-        self._sign = "#"
+        self._sign = '#'
+        self._colour = 'red'
         self._step = 1
         self.clothes = clothes
         self.hat = hat
 
-        super().__init__(self._name, self._hp, self._attack, self._sign, self._step)
+        super().__init__(self._name, self._hp, self._attack, self._sign, self._colour, self._step)
 
 
     def shout(self):

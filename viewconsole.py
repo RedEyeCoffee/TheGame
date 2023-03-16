@@ -3,6 +3,7 @@ import time
 
 from character import Character
 from controller import Controller
+from termcolor import colored
 
 
 class ViewConsole:
@@ -13,11 +14,35 @@ class ViewConsole:
         self.display_info()
         while True:
             self.move()
+
     def display_info(self):
         field = self.controller.get_field()
         os.system("CLS")
-        print("-" * 50)
-        [print(i) for i in field.field]
+        self.print_border()
+        for i in field.field:
+            for j, val in enumerate(i):
+                for ch in self.controller.get_characters():
+                    if val == ch.sign:
+                        if len(i) - 1 == j:
+                            self.print_colour_ch(colored([val], ch.colour), '\n')
+                            break
+                        else:
+                            self.print_colour_ch(colored([val], ch.colour))
+                            break
+                if val == '-':
+                    if len(i) - 1 == j:
+                        self.print_colour_ch([val], '\n')
+                    else:
+                        self.print_colour_ch([val])
+        self.print_border()
+
+    @staticmethod
+    def print_border():
+        print(colored("-", "red") * 50)
+
+    @staticmethod
+    def print_colour_ch(sign, ending=''):
+        print(sign, end=ending)
 
     def move(self):
         try:
