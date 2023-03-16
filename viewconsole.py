@@ -20,28 +20,30 @@ class ViewConsole:
         os.system("CLS")
         self.print_border()
         for i in field.field:
-            for j in range(len(i)):
+            for j, val in enumerate(i):
                 for ch in self.controller.get_characters():
-                    if i[j] == ch.sign:
-                        if len(i)-1 == j:
-                            self.print_colour_ch(colored([i[j]], ch.colour), '\n')
+                    if val == ch.sign:
+                        if len(i) - 1 == j:
+                            self.print_colour_ch(colored([val], ch.colour), '\n')
                             break
                         else:
-                            self.print_colour_ch(colored([i[j]], ch.colour))
+                            self.print_colour_ch(colored([val], ch.colour))
                             break
-                if i[j] == '-':
-                    if len(i)-1 == j:
-                        self.print_colour_ch([i[j]], '\n')
+                if val == '-':
+                    if len(i) - 1 == j:
+                        self.print_colour_ch([val], '\n')
                     else:
-                        self.print_colour_ch([i[j]])
+                        self.print_colour_ch([val])
         self.print_border()
 
-    def print_border(self):
+    @staticmethod
+    def print_border():
         print(colored("-", "red") * 50)
 
-    def print_colour_ch(self, sign, ending=''):
+    @staticmethod
+    def print_colour_ch(sign, ending=''):
         print(sign, end=ending)
-        
+
     def move(self):
         try:
             move = int(input(f'1. Движение\n2. Атака\n3. Выход\n'))

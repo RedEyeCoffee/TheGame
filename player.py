@@ -1,4 +1,3 @@
-from termcolor import colored
 import character
 
 

@@ -1,4 +1,3 @@
-from termcolor import colored
 from character import Character
 from random import randint
 

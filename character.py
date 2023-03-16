@@ -1,8 +1,6 @@
 import random
 from typing import Any
 
-from termcolor import colored
-
 from field import Field
 from move import Move
 
