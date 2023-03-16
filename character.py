@@ -18,7 +18,7 @@ class Character:
 
     @property
     def hp(self) -> int:
-        return self._hp
+        return self._h
 
     @property
     def attack_power(self) -> int:
