@@ -36,17 +36,23 @@ class Character:
     def sign(self):
         return self._sign
     
-    @property
+    # @property
     def colour(self):
         return self._colour
+    
+    # @colour.getter
+    def _colour(self, colour):
+        self._colour = colour
+    
+    # colour = property(colour, _colour)
 
-    def __init__(self, name: str, hp: int, attack: int, sign: str, colour: str, step: int) -> None:
+    def __init__(self, name: str, hp: int, attack: int, sign: str, step: int) -> None:
         self._name = name
         self._base_hp = hp
         self._hp = self._base_hp
         self._attack = attack
         self._sign = sign
-        self._colour = colour
+        #self._colour = None
         self._step = step
         self._place = None
         self.review_attr: dict = {}

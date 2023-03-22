@@ -22,12 +22,14 @@ class ViewConsole:
         for i in field.field:
             for j, val in enumerate(i):
                 for ch in self.controller.get_characters():
+                    print(ch.colour())
                     if val == ch.sign:
+                        ch.colour = 'green'
                         if len(i) - 1 == j:
-                            self.print_colour_ch(colored([val], ch.colour), '\n')
+                            self.print_colour_ch(colored([val], str(ch.colour())), '\n')
                             break
                         else:
-                            self.print_colour_ch(colored([val], ch.colour))
+                            self.print_colour_ch(colored([val], str(ch.colour())))
                             break
                 if val == '-':
                     if len(i) - 1 == j:
