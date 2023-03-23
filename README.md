@@ -1,6 +1,6 @@
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Kris465/TheGame)<br>
-![GitHub issues](https://img.shields.io/github/issues/Kris465/TheGame)<br>
-![GitHub pull requests](https://img.shields.io/github/issues-pr/Kris465/TheGame)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/RedEyeCoffee/TheGame)<br>
+![GitHub issues](https://img.shields.io/github/issues/RedEyeCoffee/TheGame)<br>
+![GitHub pull requests](https://img.shields.io/github/issues-pr/RedEyeCoffee/TheGame)
 #  Простая игра ***TheGame*** #
 
 ### Этот проект выполнен в рамках дополнительных занятий по Python.
