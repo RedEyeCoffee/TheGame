@@ -35,7 +35,7 @@ class Character:
     @property
     def sign(self):
         return self._sign
-    
+
     @property
     def colour(self):
         return self._colour
@@ -89,10 +89,10 @@ class Character:
     def review(self):
         step = self._step
         cp = {}
-        x, y = self._place
+        y, x = self._place
         cp['cp'] = self._place
-        cp['left'] = [x, y - step]
-        cp['down'] = [x + step, y]
-        cp['up'] = [x - step, y]
-        cp['right'] = [x, y + step]
+        cp['left'] = [y, x - step]
+        cp['down'] = [y + step, x]
+        cp['up'] = [y - step, x]
+        cp['right'] = [y, x + step]
         return cp

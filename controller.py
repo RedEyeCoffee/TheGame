@@ -1,5 +1,6 @@
 from random import randint
 
+from boss import Boss
 from character import Character
 from field import Field
 from mob import Mob
@@ -57,6 +58,7 @@ class Controller:
 
     def init_units(self):
         Player('lameR')
+        Boss('Dress','Cap')
         [Mob("Шляпа", "Платье") for _ in range(5)]
         self.field = Field()
         for ch in self.get_characters():
