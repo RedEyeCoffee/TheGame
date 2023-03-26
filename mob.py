@@ -9,7 +9,6 @@ class Mob(Character):
         self._hp = 100
         self._attack = 10
         self._sign = '#'
-        self._colour = 'red'
         self._step = 1
         self.clothes = clothes
         self.hat = hat
