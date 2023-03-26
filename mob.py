@@ -5,7 +5,7 @@ from random import randint
 class Mob(Character):
     
     def __init__(self, clothes, hat):
-        self._name = 'Mob'
+
         self._hp = 100
         self._attack = 10
         self._sign = '#'
