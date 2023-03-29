@@ -11,5 +11,3 @@ class Field:
     def __init__(self, size=10):
         self._field = [['-'] * size for _ in range(size)]
         self._size = size
-
-

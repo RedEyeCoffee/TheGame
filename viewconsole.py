@@ -5,6 +5,8 @@ from character import Character
 from controller import Controller
 from termcolor import colored
 
+from player import Player
+
 
 class ViewConsole:
     def __init__(self, controller: Controller):
@@ -44,19 +46,29 @@ class ViewConsole:
     def print_colour_ch(sign, ending=''):
         print(sign, end=ending)
 
+    def win_check(self):
+        lst = self.controller.get_characters()
+        if len(lst) == 1:
+            if isinstance(lst[0], Player):
+                print("ВЫ ВЫЖИЛИ!")
+            else:
+                print("К сожалению, вы проиграли...")
+            return 'ex'
+    
     def move(self):
         try:
-            move = int(input(f'1. Движение\n2. Атака\n3. Выход\n'))
-            if int(move) == 1:
-                move_side = int(input('1. Влево\n2. Вниз\n3. Вверх\n4. Вправо\n'))
-                if 0 < move_side < 5:
-                    self.controller.move(move_side)
-                else:
-                    self.validation()
-            elif move == 2:
-                self.damage(self.controller.attack())
-            elif move == 3:
-                exit()
+            move = self.win_check()
+            if move is None:
+                move = input(f' Влево(a) Вниз(s) Вверх(w) Вправо(d)\n Атака(e) Выход(ex)\n')
+
+            if move in 'weasdex':
+                match move:
+                    case 'a' | 's' | 'w' | 'd':
+                        self.controller.move(move)
+                    case 'e':
+                        self.damage(self.controller.attack())
+                    case 'ex':
+                        exit()
             else:
                 self.validation()
             self.controller.is_dead()
