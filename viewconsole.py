@@ -1,9 +1,8 @@
 import os
 import time
 
-from character import Character
-from controller import Controller
 from termcolor import colored
+from controller import Controller
 
 
 class ViewConsole:
@@ -18,37 +17,51 @@ class ViewConsole:
     def display_info(self):
         field = self.controller.get_field()
         os.system("CLS")
-        self.print_border()
-        for i in field.field:
-            for j, val in enumerate(i):
-                for ch in self.controller.get_characters():
-                    if val == ch.sign:
-                        if len(i) - 1 == j:
-                            self.print_colour_ch(colored([val], ch.colour), '\n')
-                            break
-                        else:
-                            self.print_colour_ch(colored([val], ch.colour))
-                            break
-                if val == '-':
-                    if len(i) - 1 == j:
-                        self.print_colour_ch([val], '\n')
-                    else:
-                        self.print_colour_ch([val])
-        self.print_border()
+        self.draw_border()
+        for field in field.field:
+            self.draw(field)
+        self.draw_border()
+
+    def draw(self, field):
+        for index, sign in enumerate(field):
+            if sign == ['-']:
+                self.__draw_field(field, index, sign)
+            else:
+                self.__draw_characters(field, index, sign)
+
+    def __draw_field(self, field, index, sign):
+        self.__check_end_list(field, index, sign)
+
+    def __draw_characters(self, field, index, sign):
+        for ch in self.controller.get_characters():
+            if sign == ch.sign:
+                sign = f"['{sign}']"
+                self.__check_end_list(field, index, colored(sign, ch.colour))
+                break
+
+    def __check_end_list(self, field, index, sign):
+        if len(field) - 1 == index:
+            self.__draw_sign(sign, '\n')
+        else:
+            self.__draw_sign(sign)
 
     @staticmethod
-    def print_border():
+    def draw_border():
         print(colored("-", "red") * 50)
 
     @staticmethod
-    def print_colour_ch(sign, ending=''):
+    def __draw_sign(sign, ending=''):
         print(sign, end=ending)
 
     def move(self):
         try:
-            move = int(input(f'1. Движение\n2. Атака\n3. Выход\n'))
+            move = int(input('1. Движение\n2. Атака\n3. Выход\n'))
             if int(move) == 1:
-                move_side = int(input('1. Влево\n2. Вниз\n3. Вверх\n4. Вправо\n'))
+                move_side = int(input(
+                    '1. Влево\n'
+                    '2. Вниз\n'
+                    '3. Вверх\n'
+                    '4. Вправо\n'))
                 if 0 < move_side < 5:
                     self.controller.move(move_side)
                 else:
