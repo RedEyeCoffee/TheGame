@@ -59,7 +59,7 @@ class ViewConsole:
         try:
             move = self.win_check()
             if move is None:
-                move = input(f' Влево(a) Вниз(s) Вверх(w) Вправо(d)\n Атака(e) Выход(ex)\n')
+                move = input(' Влево(a) Вниз(s) Вверх(w) Вправо(d)\n Атака(e) Выход(ex)\n')
 
             if move in 'weasdex':
                 match move:
