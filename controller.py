@@ -34,7 +34,9 @@ class Controller:
 
     def is_dead(self):
         self.field_update()
-        [self.get_characters().remove(ch) for ch in self.get_characters() if ch.hp <= 0]
+        for ch in self.get_characters():
+            if ch.hp <= 0:
+                self.get_characters().remove(ch)
 
     def move(self, move_side):
         self.review()

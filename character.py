@@ -6,7 +6,7 @@ from move import Move
 
 
 class Character:
-    characters = []
+    characters: list[Any] = []
 
     @property
     def name(self) -> str:
@@ -35,12 +35,20 @@ class Character:
     @property
     def sign(self):
         return self._sign
-    
+
     @property
     def colour(self):
         return self._colour
 
-    def __init__(self, name: str, hp: int, attack: int, sign: str, colour: str, step: int) -> None:
+    def __init__(
+            self,
+            name: str,
+            hp: int,
+            attack: int,
+            sign: str,
+            colour: str,
+            step: int
+    ) -> None:
         self._name = name
         self._base_hp = hp
         self._hp = self._base_hp
@@ -67,9 +75,9 @@ class Character:
         return self
 
     def _move_side(self, field: Field, pos_cur, pos_new):
-        if 0 <= pos_new[0] <= field.size - 1 and 0 <= pos_new[1] <= field.size - 1:
+        if all([0 <= i < field.size for i in pos_new]):
             field.field[pos_new[0]][pos_new[1]] = self._sign
-            field.field[pos_cur[0]][pos_cur[1]] = '-'
+            field.field[pos_cur[0]][pos_cur[1]] = ['-']
             self._place = pos_new
         else:
             field.field[pos_cur[0]][pos_cur[1]] = self._sign
