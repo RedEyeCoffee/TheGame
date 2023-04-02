@@ -3,7 +3,7 @@ from random import randint
 
 
 class Mob(Character):
-    
+
     def __init__(self, clothes, hat):
         self._name = 'Mob'
         self._hp = 100
@@ -14,18 +14,18 @@ class Mob(Character):
         self.clothes = clothes
         self.hat = hat
 
-        super().__init__(self._name, self._hp, self._attack, self._sign, self._colour, self._step)
-
+        super().__init__(
+            self._name,
+            self._hp,
+            self._attack,
+            self._sign,
+            self._colour,
+            self._step)
 
     def shout(self):
         print("Arrrrrgh!")
-
 
     def prize(self):
         items = ["money", "health", "map", "key", "glue", "weapon", "speed"]
         item = items[randint(0, 6)]
         print(item)
-
-
-    def buff(self):
-        pass

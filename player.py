@@ -10,4 +10,10 @@ class Player(character.Character):
         self._sign = "X"
         self._colour = 'blue'
         self._step = 1
-        super().__init__(name, self._hp, self._attack, self._sign, self._colour, self._step)
+        super().__init__(
+            name,
+            self._hp,
+            self._attack,
+            self._sign,
+            self._colour,
+            self._step)
