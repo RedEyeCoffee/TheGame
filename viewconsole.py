@@ -63,12 +63,13 @@ class ViewConsole:
             else:
                 print("К сожалению, вы проиграли...")
             return 'ex'
-    
+
     def move(self):
         try:
             move = self.win_check()
             if move is None:
-                move = input(' Влево(a) Вниз(s) Вверх(w) Вправо(d)\n Атака(e) Выход(ex)\n')
+                move = input(' Влево(a) Вниз(s) Вверх(w) Вправо(d)\n '
+                             ' Атака(e) Выход(ex)\n')
 
             if move in 'weasdex':
                 match move:
