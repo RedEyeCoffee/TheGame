@@ -51,7 +51,6 @@ class Controller:
             self.field.field[place[0]][place[1]] = character.sign
 
     def ran(self):
-        print(self.field)
         return randint(0, self.field.size - 1)
 
     def generate(self):
