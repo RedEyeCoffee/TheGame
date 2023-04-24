@@ -21,7 +21,7 @@ class Mob(Character):
             self._sign,
             self._colour,
             self._step)
-    
+
     @staticmethod
     def shout():
         print("Arrrrrgh!")
