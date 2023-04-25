@@ -58,7 +58,8 @@ class Controller:
 
     def init_units(self):
         Player('lameR')
-        [Mob("Шляпа", "Платье") for _ in range(5)]
+        for _ in range(5):
+            Mob("Шляпа", "Платье")
         self.field = Field()
         for ch in self.get_characters():
             ch.place = self.generate()
