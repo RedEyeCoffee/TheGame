@@ -26,7 +26,7 @@ _ _ _ _ _
 </code>
 
 ### В следующей картинке изображена страктура игры *TheGame* и взаимодействия персонажей игры.
-![alternative text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/lameRER/TheGame/diagram/diagram.puml)
+![alternative text](https://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/RedEyeCoffee/TheGame//main/diagram.puml)
 
 
 ### Авторы игры:
@@ -34,4 +34,4 @@ _ _ _ _ _
 <code>[Александр](https://github.com/lameRER)
 </code>
 <code>[Наталья](https://github.com/Kris465)
-</code>
+</code> 
