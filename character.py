@@ -71,7 +71,7 @@ class Character:
     def get_damage(self, damage: int):
         self._hp -= damage
         if self._hp <= 0:
-            self._sign = '-'
+            self._sign = ['-']
         return self
 
     def _move_side(self, field: Field, pos_cur, pos_new):
