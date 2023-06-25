@@ -12,9 +12,19 @@ class ViewConsole:
         self.controller = controller
 
     def start(self):
-        self.display_info()
-        while True:
-            self.move()
+        menu = input('  THEGAME \n'
+                     '1. Новая игра\n'
+                     '0. Выход\n')
+        if menu in '10':
+            match menu:
+                case '1':
+                    self.display_info()
+                    while True:
+                        self.move()
+                case '0':
+                    exit()
+        else:
+            print('Введено неверное значение!')
 
     def display_info(self):
         field = self.controller.get_field()

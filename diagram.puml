@@ -1,78 +1,166 @@
 @startuml
 
-'Building <|-- Location
-Character <|-- Player
-Character <|-- Mob
-'Mob <|-- Staff
-'Mob <|-- Patient
-'Mob <|-- Monster
-
-'Staff <|-- Chief
-'Staff <|-- Nurse
-'Staff <|-- Doctor
+Character --|> Mob
+Character --|> Player
+Character --* Controller
+Mob --|> Boss
+Field --o Controller
+Controller --o Viewconsole
+Move ..> Controller
 
 class Field{
-    --Public getter--
-    +Player
-    +mobs
+    ..getters..
+    #size(self)
+    #field(self)
 
-    --private--
-    -__player
-    -__mobs
+    ..constructor..
+    #field
+    #size
+}
 
-    --Public--
-    +size
-    +field
+abstract class Character{
+    +characters: list[Any]
 
-    --Public constructor--
-    Field(self, player, mobs, size=10)
+    ..getters..
+    #name(self) -> str
+    #full_hp(self) -> int
+    #hp(self) -> int
+    #attack_power(self) -> int
+    #place(self)
+    #sign(self)
+    #colour(self)
 
-    --Public method--
-    +display_infi(self)
+    ..setters..
+    #place(self, item)
+
+    ..constructor..
+    #name
+    #hp
+    #base_hp
+    #attack
+    #sign
+    #colour
+    #step
+    #place
+    +review_attr: dict
+    +characters
+
+    ..methods..
+    +attack(self) -> Any | None
+    ..
+    +get_damage(self, damage: int)
+    ..
+    #_move_side(self, field: Field, pos_cur, pos_new)
+    ..
+    +move(self, field, move, review: dict)
+    ..
+    +review(self)
+}
+
+class Mob {
+    ..constructor..
+    #name = 'Mob'
+    #hp = 100
+    #attack = 10
+    #sign = '#'
+    #colour = 'red'
+    #step = 1
+    +clothes
+    +hat
+
+    ..static methods..
+    +shout()
+    ..
+    +prize()
+}
+
+class Player {
+    ..constructor..
+    #hp = 100
+    #name
+    #attack = 100
+    #sign = "X"
+    #colour = 'blue'
+    #step = 1
+}
+
+class Controller {
+    ..constructor..
+    +field = None
+    +init_units()
+
+    ..getters..
+    +get_field(self)
+
+    ..setters..
+    +set_field(self, field)
+
+    ..static methods..
+    +get_characters()
+
+    ..methods..
+    +review(self)
+    ..
+    +attack(self)
+    ..
+    +is_dead(self)
+    ..
+    +move(self, move_side)
+    ..
+    +field_update(self)
+    ..
     +ran(self)
+    ..
     +generate(self)
+    ..
     +init_units(self)
 }
 
-class Character{
-    --Public getter--
-    +name(self) -> str:
-    +hp(self) -> int:
-    +base_hp(self) -> int:
-    +attack(self) -> int:
+class Boss {
+    ..constructor..
+    #Mob.super()
 
-    --Protected--
-    -_name: str
-    -_age: int
-    -_base_hp: int
-    -_attack: int
-    -_sing: int
-    -_place: int
-
-    --Public constructor--
-    +Character(self, character) -> None:
-
-    --Private method--
-    -__get_damage(self, damage) -> None:
-
-    --Public method--
-    +attack(self, character: Character) -> None:
+    ..methods..
+    +teleport(self, field, move, player)
+    ..
+    +circle_attack(self, field, player, mobs)
 }
 
+class Viewconsole {
+    +Controller.object
 
-class Player{
-    --Private--
+    ..methods..
+    +start(self)
+    ..
+    +display_info(self)
+    ..
+    +draw(self, field)
+    ..
+    -__draw_field(self, field, index, sign)
+    ..
+    -__draw_characters(self, field, index, sign)
+    ..
+    -__check_end_list(self, field, index, sign)
+    ..
+    +win_check(self)
+    ..
+    +move(self)
 
-    --Public constructor--
-    +Player(self) -> None:
+    ..static methods..
+    +draw_border()
+    ..
+    -__draw_sign(sign, ending='')
+    ..
+    +validation()
+    ..
+    +damage(character)
 }
 
-class Mob{
-    --Protected--
-    #type_mob: Enum
-
-    --Public constructor--
-    +Mob(self, type_mob: Object) -> None:
+enum Move {
+    LEFT = 'a'
+    DOWN = 's'
+    UP = 'w'
+    RIGHT = 'd'
 }
 
 @enduml

@@ -1,5 +1,5 @@
-from character import Character
 from random import randint
+from character import Character
 
 
 class Mob(Character):
@@ -22,10 +22,12 @@ class Mob(Character):
             self._colour,
             self._step)
 
-    def shout(self):
+    @staticmethod
+    def shout():
         print("Arrrrrgh!")
 
-    def prize(self):
+    @staticmethod
+    def prize():
         items = ["money", "health", "map", "key", "glue", "weapon", "speed"]
         item = items[randint(0, 6)]
         print(item)

@@ -34,4 +34,4 @@ _ _ _ _ _
 <code>[Александр](https://github.com/lameRER)
 </code>
 <code>[Наталья](https://github.com/Kris465)
-</code> 
+</code>
