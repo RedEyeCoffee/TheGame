@@ -1,5 +1,6 @@
 import os
 import time
+import platform
 
 from termcolor import colored
 from controller import Controller
@@ -28,7 +29,10 @@ class ViewConsole:
 
     def display_info(self):
         field = self.controller.get_field()
-        os.system("CLS")
+        if platform.system() == 'Linux':
+            os.system('clear')
+        elif platform.system() == 'Windows':
+            os.system("CLS")
         self.draw_border()
         for field in field.field:
             self.draw(field)
