@@ -75,7 +75,8 @@ class Character:
         return self
 
     def _move_side(self, field: Field, pos_cur, pos_new):
-        if all([0 <= i < field.size for i in pos_new]):
+        if all([0 <= i < field.size for i in pos_new]) \
+                and field.field[pos_new[0]][pos_new[1]] == ['-']:
             field.field[pos_new[0]][pos_new[1]] = self._sign
             field.field[pos_cur[0]][pos_cur[1]] = ['-']
             self._place = pos_new
